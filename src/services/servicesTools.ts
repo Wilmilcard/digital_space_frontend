@@ -4,16 +4,16 @@ import { Observable } from 'rxjs/internal/Observable';
 
 export class servicesTools{
 
-  public getHttpOptions():httpOptions{
-    var userToken = localStorage.getItem('token');
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': `Bearer ${userToken}`
-      })
-    };
-    return httpOptions;
-  }
+  // public getHttpOptions():httpOptions{
+  //   var userToken = localStorage.getItem('token');
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type':  'application/json',
+  //       'Authorization': `Bearer ${userToken}`
+  //     })
+  //   };
+  //   return httpOptions;
+  // }
 
   public handlerError(error:HttpErrorResponse): Observable<never> {
     let errorMessage = '';

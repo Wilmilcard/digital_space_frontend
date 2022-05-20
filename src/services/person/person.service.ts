@@ -12,7 +12,7 @@ import { Person_Request } from 'src/models/http_request/person_request.model';
 export class PersonService extends servicesTools {
 
   rpta:GenericResponse | undefined;
-  endpoint:string = '/api/Person';
+  endpoint:string = 'api/Person';
   
   constructor(private http: HttpClient) {
     super();
@@ -20,7 +20,7 @@ export class PersonService extends servicesTools {
   
   getAll(): Observable<GenericResponse>{
     return this.http
-    .get<GenericResponse>(`${environment.URL_API}${this.endpoint}`, this.getHttpOptions())
+    .get<GenericResponse>(`${this.endpoint}`)
     .pipe(
       map((res: GenericResponse) => {
         return res;
@@ -31,7 +31,7 @@ export class PersonService extends servicesTools {
 
   getById($id: string){
     return this.http
-      .get<GenericResponse>(`${environment.URL_API}${this.endpoint}/${$id}`, this.getHttpOptions())
+      .get<GenericResponse>(`${this.endpoint}/${$id}`)
       .pipe(
         map((res: GenericResponse) => {
           return res;
@@ -42,7 +42,7 @@ export class PersonService extends servicesTools {
 
   create($persona:Person_Request): Observable<GenericResponse>{
     return this.http
-      .post<GenericResponse>(`${environment.URL_API}${this.endpoint}`, $persona, this.getHttpOptions())
+      .post<GenericResponse>(`${this.endpoint}`, $persona)
       .pipe(
         map((res: GenericResponse) => { return res; }),
         catchError((err) => this.handlerError(err))
@@ -51,7 +51,7 @@ export class PersonService extends servicesTools {
 
   update($persona:Person_Request, $id:string): Observable<GenericResponse>{
     return this.http
-      .put<GenericResponse>(`${environment.URL_API}${this.endpoint}/${$id}`, $persona, this.getHttpOptions())
+      .put<GenericResponse>(`${this.endpoint}/${$id}`, $persona)
       .pipe(
         map((res: GenericResponse) => { return res; }),
         catchError((err) => this.handlerError(err))
@@ -60,7 +60,7 @@ export class PersonService extends servicesTools {
 
   delete($id: string){
     return this.http
-      .delete<GenericResponse>(`${environment.URL_API}${this.endpoint}/${$id}`, this.getHttpOptions())
+      .delete<GenericResponse>(`${this.endpoint}/${$id}`)
       .pipe(
         map((res: GenericResponse) => {
           return res;
