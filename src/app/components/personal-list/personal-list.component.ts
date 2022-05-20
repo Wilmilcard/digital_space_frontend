@@ -15,7 +15,7 @@ export class PersonalListComponent implements OnInit {
   
   response=[];
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['personID', 'name', 'telephone', 'document','editar', 'eliminar'];
+  displayedColumns: string[] = ['personID', 'name', 'telephone', 'document', 'profile','edit','delete'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -31,6 +31,10 @@ export class PersonalListComponent implements OnInit {
       console.log('res ',res);
       this.dataSource.data = res.data
     });
+  }
+
+  show(person_id){
+    console.log('juan ' + person_id)
   }
 
   delete(person_id){
